@@ -1,0 +1,74 @@
+  {
+  "habits": [
+    {
+      "id": 1,
+      "title": "Hábito de leer 10 páginas al día",
+      "category": "Crecimiento personal",
+      "description": "Dedicar 15 a 20 minutos diarios a la lectura de libros que te aporten valor.",
+      "benefit": "La lectura desarrolla el enfoque y la calma mental en un mundo saturado de contenido digital rápido. Ayuda a reducir la ansiedad causada por el uso excesivo de redes sociales y fomenta un crecimiento continuo que fortalece la autoestima y la resiliencia.",
+      "theory": {
+        "cue": "Dejar el libro visible en la mesa de noche.",
+        "craving": "Querer aprender algo nuevo o relajarse antes de dormir.",
+        "response": "Leer 10 páginas.",
+        "reward": "Sentir calma, aprendizaje y crecimiento personal."
+      },
+      "science": "Estudios en 'Frontiers in Psychology' (2020) muestran que leer de forma regular reduce los niveles de cortisol (estrés) y promueve la estabilidad emocional."
+    },
+    {
+      "id": 2,
+      "title": "Hábito de caminar 30 minutos",
+      "category": "Salud",
+      "description": "Realizar caminatas diarias para mantener un estilo de vida activo.",
+      "benefit": "Caminar diariamente no solo mejora la salud cardiovascular, sino que también ayuda a combatir síntomas de ansiedad y depresión derivados del sedentarismo y la hiperconectividad digital.",
+      "theory": {
+        "cue": "Colocar los zapatos deportivos cerca de la puerta.",
+        "craving": "Mover el cuerpo después de estar sentado mucho tiempo.",
+        "response": "Salir a caminar 30 minutos.",
+        "reward": "Sensación de energía y reducción del estrés."
+      },
+      "science": "Investigaciones publicadas en 'Journal of Psychiatric Research' (2019) indican que caminar regularmente disminuye los niveles de depresión leve a moderada y aumenta la producción de endorfinas."
+    },
+    {
+      "id": 3,
+      "title": "Hábito de escribir un diario",
+      "category": "Reflexión",
+      "description": "Anotar pensamientos, logros o aprendizajes al finalizar el día.",
+      "benefit": "La escritura reflexiva permite procesar emociones en un entorno donde la inmediatez digital genera sobrecarga mental. Promueve la claridad, la gratitud y la reducción de pensamientos negativos.",
+      "theory": {
+        "cue": "Dejar una libreta y un bolígrafo en la mesa de noche.",
+        "craving": "Liberar tensiones acumuladas del día.",
+        "response": "Escribir en el diario durante 5 a 10 minutos.",
+        "reward": "Mayor claridad mental y sensación de alivio emocional."
+      },
+      "science": "Un estudio en 'Journal of Research in Personality' (2018) mostró que llevar un diario mejora el bienestar emocional y reduce la rumiación mental asociada con la ansiedad."
+    },
+    {
+      "id": 4,
+      "title": "Hábito de dormir 7-8 horas",
+      "category": "Bienestar",
+      "description": "Mantener un horario de sueño constante para mejorar la recuperación física y mental.",
+      "benefit": "Un sueño reparador regula las emociones y mejora el rendimiento cognitivo, contrarrestando el impacto del uso nocturno de pantallas y el ritmo acelerado de la sociedad.",
+      "theory": {
+        "cue": "Establecer una alarma para ir a dormir a la misma hora.",
+        "craving": "Descansar después de un día productivo.",
+        "response": "Apagar pantallas y dormir 7-8 horas.",
+        "reward": "Más energía, enfoque y estabilidad emocional."
+      },
+      "science": "Según la 'National Sleep Foundation', dormir entre 7 y 8 horas reduce el riesgo de depresión y ansiedad, y fortalece la memoria y la toma de decisiones."
+    },
+    {
+      "id": 5,
+      "title": "Hábito de meditar 5 minutos",
+      "category": "Mindfulness",
+      "description": "Practicar meditación breve cada mañana para empezar con calma.",
+      "benefit": "La meditación contrarresta la hiperestimulación causada por redes sociales y notificaciones, reduciendo la ansiedad y mejorando la capacidad de atención.",
+      "theory": {
+        "cue": "Sentarse en un lugar tranquilo al despertar.",
+        "craving": "Empezar el día con calma y claridad.",
+        "response": "Meditar durante 5 minutos.",
+        "reward": "Sensación de paz mental y enfoque para el día."
+      },
+      "science": "Un metaanálisis en 'JAMA Internal Medicine' (2014) concluyó que la meditación mindfulness es efectiva para reducir la ansiedad, la depresión y el estrés."
+    }
+  ]
+}
