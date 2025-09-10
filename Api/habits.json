@@ -1,7 +1,6 @@
   {
   "habits": [
     {
-      "id": 1,
       "title": "Hábito de leer 10 páginas al día",
       "category": "Crecimiento personal",
       "description": "Dedicar 15 a 20 minutos diarios a la lectura de libros que te aporten valor.",
@@ -15,7 +14,6 @@
       "science": "Estudios en 'Frontiers in Psychology' (2020) muestran que leer de forma regular reduce los niveles de cortisol (estrés) y promueve la estabilidad emocional."
     },
     {
-      "id": 2,
       "title": "Hábito de caminar 30 minutos",
       "category": "Salud",
       "description": "Realizar caminatas diarias para mantener un estilo de vida activo.",
@@ -29,7 +27,6 @@
       "science": "Investigaciones publicadas en 'Journal of Psychiatric Research' (2019) indican que caminar regularmente disminuye los niveles de depresión leve a moderada y aumenta la producción de endorfinas."
     },
     {
-      "id": 3,
       "title": "Hábito de escribir un diario",
       "category": "Reflexión",
       "description": "Anotar pensamientos, logros o aprendizajes al finalizar el día.",
@@ -43,7 +40,6 @@
       "science": "Un estudio en 'Journal of Research in Personality' (2018) mostró que llevar un diario mejora el bienestar emocional y reduce la rumiación mental asociada con la ansiedad."
     },
     {
-      "id": 4,
       "title": "Hábito de dormir 7-8 horas",
       "category": "Bienestar",
       "description": "Mantener un horario de sueño constante para mejorar la recuperación física y mental.",
@@ -57,7 +53,6 @@
       "science": "Según la 'National Sleep Foundation', dormir entre 7 y 8 horas reduce el riesgo de depresión y ansiedad, y fortalece la memoria y la toma de decisiones."
     },
     {
-      "id": 5,
       "title": "Hábito de meditar 5 minutos",
       "category": "Mindfulness",
       "description": "Practicar meditación breve cada mañana para empezar con calma.",

@@ -10,6 +10,8 @@
 import express from "express"; 
 import dotenv from "dotenv";
 import { connectionDB } from "./Src/Config/db.js"; 
+import { userRouter } from "./Src/Routes/users.routes.js";
+import { habitRouter } from "./Src/Routes/habits.routes.js";
  
 
 const app = express();
@@ -21,6 +23,10 @@ connectionDB();
 app.get('/', (req, res) => {
   res.send('¡Server works');
 });
+
+app.use(express.json());
+app.use("/posts", habitRouter);
+app.use("/users", userRouter);
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
