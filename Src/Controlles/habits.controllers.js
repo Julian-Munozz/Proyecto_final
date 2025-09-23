@@ -24,6 +24,18 @@ export const getHabits = async (req, res) => {
           
 };
 
+export const getHabitsByUserName = async (req, res) => {
+
+ try {
+        const { userName } = req.params;
+        const allHabits = await habitModel.find({"user.userName": userName}).populate ("user", "img userName");
+        return res.status(200).json({"mensaje": "Se encontraron los siguientes hábitos", "data": allHabits});
+    } catch (error) {
+        return res.status(500).json({ "mensaje": "Error al obtener los hábitos", "Error": error.message || error });
+    }
+          
+};
+
 //3. Método para ACTUALIZAR TODOS los hábitos -> PUT
 
 export const updateHabits = async (req, res) => {
