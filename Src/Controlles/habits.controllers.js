@@ -36,9 +36,9 @@ export const getHabitsByUserName = async (req, res) => {
           
 };
 
-//3. Método para ACTUALIZAR TODOS los hábitos -> PUT
+//3. Método para ACTUALIZAR  los hábitos -> PUT
 
-export const updateHabits = async (req, res) => {
+export const updateHabitsById = async (req, res) => {
 
      try {
         const idForUpdate = req.params._id;
@@ -50,9 +50,9 @@ export const updateHabits = async (req, res) => {
     }
 };
 
-//4. Método para BORRAR TODOS los hábitos -> DELETE
+//4. Método para BORRAR  los hábitos -> DELETE
 
-export const deleteHabits = async (req, res) => {
+export const deleteHabitsById = async (req, res) => {
 
      try {
         const idForDelete = req.params._id;
@@ -62,4 +62,5 @@ export const deleteHabits = async (req, res) => {
         return res.status(400).json({ "mensaje": "Error al eliminar el hábito", "Error": error.message || error });
     }
 };
+
 

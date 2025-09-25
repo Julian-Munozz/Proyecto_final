@@ -1,16 +1,27 @@
 import express from "express";
-import { createUser, getUsers, updateUsers, deleteUsers  } from "../Controlles/users.controllers.js";
+import {
+  createUser, getUsers, getUserById, updatePassword,
+  updateProfile, deleteOwnAccount
+} from "../Controlles/users.controllers.js";
+
+import { upload } from "../Config/multer.js";
+import { auth } from "../Middelware/auth.js";
 
 export const userRouter = express.Router();
 
-//ruta para el POST
-userRouter.post("/", createUser);
+userRouter.post("/", upload.single("img"), createUser);
 
-//ruta para el GET
-userRouter.get("/", getUsers);
+// Obtener todos los usuarios (solo admin)
+userRouter.get("/", auth("admin"), getUsers);
 
-//ruta para el PUT
-userRouter.put("/:id", updateUsers);
+// Obtener un usuario por ID (admin puede consultar info de cualquier usuario)
+userRouter.get("/:_id", auth("admin"), getUserById);
 
-//ruta para el DELETE
-userRouter.delete("/:id", deleteUsers);
+// Actualizar contraseña del propio usuario (el id debe ser el suyo mismo)
+userRouter.put("/password/:_id", auth("user"), updatePassword);
+
+// Actualizar perfil del propio usuario (bio, intereses, imagen)
+userRouter.put("/profile/:_id", auth("user"), upload.single("img"), updateProfile);
+
+// Eliminar cuenta propia
+userRouter.delete("/me/:_id", auth("user"), deleteOwnAccount);

@@ -3,7 +3,9 @@ import bcryptjs from "bcryptjs";
 import { generateToken } from "../Config/jwt.js";
 
 export const login = async (req, res) =>{
+
     try {
+        console.log("Body recibido:", req.body);
         const { email, password } = req.body;
         const userFound = await userModel.findOne({ email: email });
        if (!userFound) {

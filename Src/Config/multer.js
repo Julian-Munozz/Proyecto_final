@@ -11,7 +11,7 @@ const _dirname = path.dirname(_filename); // _dirname es la ruta del directorio 
 
 // 1. Crear la carpetra donde se van a guardar los archivos
 
-const UPLOADS_FOLDER = path.join(_dirname, "../Src/uploads");
+const UPLOADS_FOLDER = path.join(_dirname, "../uploads");
 
 if (!fs.existsSync(UPLOADS_FOLDER)) {
   fs.mkdirSync(UPLOADS_FOLDER);

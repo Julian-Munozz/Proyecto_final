@@ -1,63 +1,134 @@
 import { userModel } from "../Models/Users.model.js";
 import bcrypt from "bcryptjs";
-
+/* Crear usuario */
 export const createUser = async (req, res) => {
+  try {
+    const { fullName, userName, email, password, role, img, bio, interests } = req.body;
 
-     try {
-        // destructuración: cuando necesito procesar la info del usuario antes de guardarla
-        const { fullName, userName, email, password, role, img, bio, interests } = req.body;
-        const encrypedPassword = await bcrypt.hash(password, 10);
+    const encrypedPassword = await bcrypt.hash(password, 10);
 
-        await userModel.create({
-            fullName,
-            userName,
-            email,
-            password: encrypedPassword,
-            role,
-            img,
-            bio,
-            interests
-        });
-        return res.status(201).json({"mensaje": "Usuario creado"});
-    } catch (error) {
-        return res.status(400).json({ "mensaje": "Error al crear el usuario", "Error": error.message || error });
-    }
+    await userModel.create({
+      fullName,
+      userName,
+      email,
+      password: encrypedPassword,
+      role,
+      img,
+      bio,
+      interests
+    });
+
+    return res.status(201).json({ "mensaje": "Usuario creado" });
+
+  } catch (error) {
+    return res.status(400).json({
+      "mensaje": "Error al crear el usuario",
+      "Error": error.message || error
+    });
+  }
 };
 
+/* Obtener todos los usuarios */
 export const getUsers = async (req, res) => {
-
- try {
-        const allUsers = await userModel.find();
-        return res.status(200).json({"mensaje": "Se encontraron los siguientes usuarios", "data": allUsers});
-    } catch (error) {
-        return res.status(500).json({ "mensaje": "Error al obtener los usuarios", "Error": error.message || error });
-    }
-          
+  try {
+    const allUsers = await userModel.find();
+    return res.status(200).json({
+      "mensaje": "Se encontraron los siguientes usuarios",
+      "data": allUsers
+    });
+  } catch (error) {
+    return res.status(500).json({
+      "mensaje": "Error al obtener los usuarios",
+      "Error": error.message || error
+    });
+  }
 };
 
-//3. Método para ACTUALIZAR TODOS los usuarios -> PUT
+/* Obtener un usuario por ID */
+export const getUserById = async (req, res) => {
+  try {
+    const user = await userModel.findById(req.params._id).select("-password");
 
-export const updateUsers = async (req, res) => {
-
-     try {
-        const idForUpdate = req.params._id;
-        const dataForUpdate = req.body;
-        await userModel.findByIdAndUpdate(idForUpdate, dataForUpdate);
-        return res.status(200).json({"mensaje": "Usuario actualizado"});
-    } catch (error) {
-        return res.status(400).json({ "mensaje": "Error al actualizar el usuario", "Error": error.message || error });
+    if (!user) {
+      return res.status(404).json({ "mensaje": "Usuario no encontrado" });
     }
+
+    return res.status(200).json({
+      "mensaje": "Usuario encontrado",
+      "data": user
+    });
+
+  } catch (error) {
+    return res.status(400).json({
+      "mensaje": "Error al obtener el usuario",
+      "Error": error.message || error
+    });
+  }
 };
 
-//4. Método para BORRAR TODOS los usuarios -> DELETE
+/* Actualizar contraseña */
+export const updatePassword = async (req, res) => {
+  try {
+    const { password } = req.body;
 
-export const deleteUsers = async (req, res) => {
-
-     try {
-        const idForDelete = req.params._id;
-        await userModel.findByIdAndDelete(idForDelete);
-        return res.status(200).json({"mensaje": "Usuario eliminado"}); 
-    } catch (error) {
-        return res.status(400).json({ "mensaje": "Error al eliminar el usuario", "Error": error.message || error });
+    if (!password) {
+      return res.status(400).json({ "mensaje": "Debe proporcionar una nueva contraseña" });
     }
+
+    const encrypedPassword = await bcrypt.hash(password, 10);
+
+    await userModel.findByIdAndUpdate(req.params._id, { password: encrypedPassword });
+
+    return res.status(200).json({ "mensaje": "Contraseña actualizada" });
+
+  } catch (error) {
+    return res.status(400).json({
+      "mensaje": "Error al actualizar la contraseña",
+      "Error": error.message || error
+    });
+  }
+};
+
+/* Actualizar perfil */
+export const updateProfile = async (req, res) => {
+  try {
+    
+    const { fullName, userName, bio, interests } = req.body;
+
+    const updateFields = { fullName, userName, bio, interests };
+
+    if (req.file) {
+      updateFields.img = req.file.path;
+    }
+
+    await userModel.findByIdAndUpdate(req.params._id, updateFields);
+
+    return res.status(200).json({ "mensaje": "Perfil actualizado" });
+
+  } catch (error) {
+    return res.status(400).json({
+      "mensaje": "Error al actualizar el perfil",
+      "Error": error.message || error
+    });
+  }
+};
+
+/* Eliminar cuenta propia */
+export const deleteOwnAccount = async (req, res) => {
+  try {
+    const userId = req.params._id;
+    const deletedUser = await userModel.findByIdAndDelete(userId);
+
+    if (!deletedUser) {
+      return res.status(404).json({ "mensaje": "Usuario no encontrado" });
+    }
+
+    return res.status(200).json({ "mensaje": "Cuenta eliminada correctamente" });
+
+  } catch (error) {
+    return res.status(400).json({
+      "mensaje": "Error al eliminar la cuenta",
+      "Error": error.message || error
+    });
+  }
 };
