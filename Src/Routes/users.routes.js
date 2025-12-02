@@ -15,13 +15,13 @@ userRouter.post("/", upload.single("img"), createUser);
 userRouter.get("/", auth("admin"), getUsers);
 
 // Obtener un usuario por ID (admin puede consultar info de cualquier usuario)
-userRouter.get("/:_id", auth("admin"), getUserById);
+userRouter.get("/:_id", getUserById);
 
 // Actualizar contraseña del propio usuario (el id debe ser el suyo mismo)
-userRouter.put("/password/:_id", auth("user"), updatePassword);
+userRouter.put("/password/:_id", updatePassword);
 
 // Actualizar perfil del propio usuario (bio, intereses, imagen)
-userRouter.put("/profile/:_id", auth("user"), upload.single("img"), updateProfile);
+userRouter.put("/profile/:_id", upload.single("img"), updateProfile);
 
 // Eliminar cuenta propia
-userRouter.delete("/me/:_id", auth("user"), deleteOwnAccount);
+userRouter.delete("/me/:_id", deleteOwnAccount);

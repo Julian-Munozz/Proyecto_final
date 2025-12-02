@@ -3,10 +3,19 @@ import { habitModel } from "../Models/habits.model.js";
 export const createPost = async (req, res) => {
 
     try {
-        await habitModel.create(req.body);
+        const newHabit = await habitModel.create({
+      user: req.user?._id || null, 
+      img: req.file ? req.file.filename : null, 
+      tittle: req.body.tittle,
+      category: req.body.category,
+      description: req.body.description,
+      benefit: req.body.benefit,
+    });
         return res.status(201).json({"mensaje": "Hábito creado"}); 
+       
     } catch (error) {
         return res.status(400).json({ "mensaje": "Error al crear el hábito", "Error": error.message || error });
+        
     }
 };
 

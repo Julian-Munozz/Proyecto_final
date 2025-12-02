@@ -29,6 +29,12 @@ app.get('/', (req, res) => {
 });
 
 app.use(cors());
+const corsOptions = {
+  origin: `http://localhost:${process.env.PORT_FRONTEND}`, 
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/posts", habitRouter);
 app.use("/users", userRouter);

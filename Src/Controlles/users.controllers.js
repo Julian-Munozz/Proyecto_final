@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 /* Crear usuario */
 export const createUser = async (req, res) => {
   try {
-    const { fullName, userName, email, password, role, img, bio, interests } = req.body;
+    const { fullName, userName, email, password, role, img } = req.body;
 
     const encrypedPassword = await bcrypt.hash(password, 10);
 
@@ -13,9 +13,7 @@ export const createUser = async (req, res) => {
       email,
       password: encrypedPassword,
       role,
-      img,
-      bio,
-      interests
+      img
     });
 
     return res.status(201).json({ "mensaje": "Usuario creado" });
@@ -93,9 +91,9 @@ export const updatePassword = async (req, res) => {
 export const updateProfile = async (req, res) => {
   try {
     
-    const { fullName, userName, bio, interests } = req.body;
+    const { fullName, userName } = req.body;
 
-    const updateFields = { fullName, userName, bio, interests };
+    const updateFields = { fullName, userName};
 
     if (req.file) {
       updateFields.img = req.file.path;

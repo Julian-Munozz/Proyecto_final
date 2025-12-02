@@ -8,8 +8,6 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true, minlength: 6 },
     role: { type: String, enum: ["admin", "user"], required: true },
     img: { type: String, required: false },
-    bio: { type: String, required: false },
-    interests: [{ type: String, enum: ["xxx", "vvv"], required: false }]
 });
 
 export const userModel = mongoose.model("User", userSchema);
