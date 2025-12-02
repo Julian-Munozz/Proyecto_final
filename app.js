@@ -38,7 +38,8 @@ app.use("/posts", habitRouter);
 app.use("/users", userRouter);
 app.use("/uploads", express.static(path.join(_dirname, "uploads")));
 app.use("/login", loginRouter);
-app.use(express.static(path.join(_dirname, "dist", "frontend", "browser", "index.html")));
+app.use(express.static(path.join(_dirname, "dist", "frontend", "browser")));
+
 app.get(/.*/, (req, res) => {
   res.sendFile(path.join(_dirname, "dist", "frontend", "browser", "index.html"));
 });
