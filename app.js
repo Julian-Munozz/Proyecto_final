@@ -24,9 +24,9 @@ connectionDB();
 const _filename = fileURLToPath(import.meta.url); 
 const _dirname = path.dirname(_filename);
 
-app.get('/', (req, res) => {
-  res.send('¡Server works');
-});
+//app.get('/', (req, res) => {
+//  res.send('¡Server works');
+//});
 
 app.use(cors());
 const corsOptions = {
@@ -40,7 +40,10 @@ app.use("/posts", habitRouter);
 app.use("/users", userRouter);
 app.use("/uploads", express.static(path.join(_dirname, "uploads")));
 app.use("/login", loginRouter);
-
+app.use(express.static(path.join(_dirname, "dist", "frontend", "browser", "index.html")));
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(_dirname, "dist", "frontend", "browser", "index.html"));
+});
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
 });
