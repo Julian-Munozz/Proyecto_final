@@ -19,14 +19,12 @@ import { fileURLToPath } from "url";
 
 const app = express();
 dotenv.config();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 connectionDB();
 const _filename = fileURLToPath(import.meta.url); 
 const _dirname = path.dirname(_filename);
 
-//app.get('/', (req, res) => {
-//  res.send('¡Server works');
-//});
+
 
 app.use(cors());
 const corsOptions = {
